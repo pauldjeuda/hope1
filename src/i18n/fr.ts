@@ -1,0 +1,261 @@
+import type { Messages } from "./types";
+
+export const fr: Messages = {
+  nav: {
+    home: "Accueil",
+    openMenu: "Ouvrir le menu",
+    closeMenu: "Fermer le menu",
+    contact: "Contact",
+    donate: "Faire un don",
+    mainNav: "Navigation principale",
+    langSwitch: "Changer de langue",
+  },
+  navItems: [
+    { label: "Accueil", path: "/" },
+    { label: "À propos", path: "/a-propos" },
+    { label: "Actions", path: "/missions" },
+    { label: "Contact", path: "/contact" },
+  ],
+  hero: {
+    line: "Association humanitaire à Yaoundé — aider les plus vulnérables face aux conflits, catastrophes et maladies.",
+    donate: "Faire un don",
+    actions: "Nos actions",
+  },
+  philosophy: {
+    title: "Un pont vers ceux qui en ont le plus besoin",
+    titleLines: [
+      "Un pont vers ceux",
+      "qui en ont",
+      "le plus besoin",
+    ],
+    p1: "HOPE Bridge for the Needy est une association à but non lucratif. Nous soulageons la souffrance des populations touchées par des conflits, des catastrophes naturelles et des maladies.",
+    p2: "Nous renforçons la résilience des communautés, la santé primaire, la nutrition et la protection des femmes et des enfants — avec dignité, sur le terrain.",
+    cta: "Qui sommes-nous ?",
+    note: "Venir en aide,\navec dignité.",
+  },
+  programs: {
+    title: "Nos axes d'action",
+    lead: "Quatre priorités pour un impact concret au Cameroun.",
+    items: [
+      {
+        id: "urgence",
+        title: "Aide d'urgence",
+        text: "Soutien rapide aux communautés touchées par les crises et les catastrophes.",
+        href: "/missions",
+      },
+      {
+        id: "sante",
+        title: "Santé primaire",
+        text: "Accès aux soins et renforcement du système de santé local.",
+        href: "/missions",
+      },
+      {
+        id: "nutrition",
+        title: "Nutrition",
+        text: "Sécurité alimentaire et bien-être nutritionnel des plus vulnérables.",
+        href: "/missions",
+      },
+      {
+        id: "protection",
+        title: "Protection",
+        text: "Protection de l'enfant, de la jeune fille, de la femme et des personnes à besoins spécifiques.",
+        href: "/missions#objectifs",
+      },
+    ],
+  },
+  donateBanner: {
+    title: "Votre don construit un pont",
+    text: "Chaque contribution soutient l'aide d'urgence, la santé, la nutrition et la protection des plus vulnérables.",
+    cta: "Faire un don",
+  },
+  engage: {
+    title: "Agir avec nous, depuis Yaoundé",
+    titleLines: ["Agir avec nous,", "depuis Yaoundé"],
+    lead: "Le don n'est pas la seule façon de soutenir HOPE Bridge.",
+    body: "Partenariats, bénévolat, questions ou simple prise de contact : notre siège est au Cameroun, Département du Mfoundi. Écrivons-nous — chaque lien compte pour les communautés que nous accompagnons.",
+    contactCta: "Nous contacter",
+    aboutCta: "En savoir plus",
+  },
+  objectives: {
+    title: "Nos objectifs",
+    items: [
+      {
+        title: "Lutte contre la pauvreté",
+        text: "Promouvoir la participation effective des femmes, des filles et des personnes vulnérables au développement du Cameroun.",
+      },
+      {
+        title: "Système de santé",
+        text: "Promouvoir le renforcement du système de santé et l'accès aux soins primaires.",
+      },
+      {
+        title: "Bien-être communautaire",
+        text: "Renforcer les capacités des communautés pour un bien-être durable et partagé.",
+      },
+      {
+        title: "Protection",
+        text: "Contribuer à la protection de l'enfant, de la jeune fille, de la femme et de toute personne ayant des besoins spécifiques.",
+      },
+    ],
+  },
+  footer: {
+    tagline:
+      "Association humanitaire à Yaoundé — aide d'urgence, santé, nutrition et protection.",
+    about:
+      "HOPE Bridge for the Needy œuvre pour soulager la souffrance et renforcer la résilience des communautés au Cameroun.",
+    programsTitle: "Actions",
+    orgTitle: "L'association",
+    findUs: "Siège",
+    programs: [
+      { label: "Aide d'urgence", href: "/missions" },
+      { label: "Santé primaire", href: "/missions" },
+      { label: "Nutrition", href: "/missions" },
+      { label: "Faire un don", href: "/don" },
+    ],
+    org: [
+      { label: "À propos", href: "/a-propos" },
+      { label: "Actions", href: "/missions" },
+      { label: "Contact", href: "/contact" },
+      { label: "Faire un don", href: "/don" },
+    ],
+    legal: [
+      { label: "Mentions légales", href: "/mentions-legales" },
+      { label: "Confidentialité", href: "/confidentialite" },
+    ],
+    contact: {
+      city: "Yaoundé, Cameroun",
+      address:
+        "Département du Mfoundi, Région du Centre, République du Cameroun",
+    },
+    rights: "© {year} HOPE Bridge for the Needy. Tous droits réservés.",
+  },
+  pages: {
+    about: {
+      title: "À propos",
+      eyebrow: "L'association",
+      lead: "Soulager la souffrance, renforcer la résilience des communautés.",
+      h2: "Qui sommes-nous ?",
+      p1: "HOPE Bridge for the Needy est une association à but non lucratif créée pour soulager la souffrance des populations touchées par des conflits, des catastrophes naturelles et des maladies.",
+      p2: "Elle s'engage à renforcer la résilience des communautés locales, à promouvoir la santé primaire, la nutrition, la protection des femmes et des enfants, et à soutenir les programmes d'aide d'urgence. Siège : Yaoundé, Département du Mfoundi, Région du Centre, Cameroun.",
+      linkMissions: "Voir nos actions",
+      linkContact: "Nous contacter",
+      linkDonate: "Faire un don",
+    },
+    missions: {
+      title: "Actions",
+      eyebrow: "Ce que nous faisons",
+      lead: "Aide d'urgence, santé, nutrition et protection des plus vulnérables.",
+      h2: "Notre mandat",
+      p1: "L'association a pour mission de venir en aide aux personnes vulnérables et de contribuer à l'amélioration de leurs conditions de vie.",
+      p2: "À ce titre, elle se fixe notamment pour objectifs de lutter contre la pauvreté, de promouvoir le renforcement du système de santé, de renforcer les capacités des communautés et de protéger l'enfant, la jeune fille, la femme et toute personne ayant des besoins spécifiques.",
+    },
+    contact: {
+      title: "Contact",
+      eyebrow: "Nous joindre",
+      lead: "Siège à Yaoundé — Département du Mfoundi, Région du Centre.",
+      h2: "Écrire à l'association",
+      p1: "Pour une information, un partenariat ou du bénévolat, contactez-nous. Pour un don, utilisez la page dédiée — c'est plus simple et plus sûr.",
+      emailLabel: "Courriel",
+      locationLabel: "Adresse",
+      donateHint: "Vous souhaitez soutenir nos actions ?",
+      donateCta: "Aller à la page Don",
+    },
+    donate: {
+      title: "Faire un don",
+      eyebrow: "Soutenir HOPE Bridge",
+      lead: "Votre don finance l'aide d'urgence, la santé, la nutrition et la protection au Cameroun.",
+      whyTitle: "Pourquoi donner ?",
+      why: "Chaque contribution renforce notre capacité à intervenir auprès des personnes vulnérables à Yaoundé et au-delà. Association à but non lucratif, nous agissons avec transparence et dignité.",
+      amountsTitle: "Choisissez un montant",
+      customLabel: "Autre montant",
+      customPlaceholder: "Ex. 15000",
+      currency: "FCFA",
+      allocationTitle: "Affecter mon don (optionnel)",
+      allocations: [
+        { id: "general", label: "Là où le besoin est le plus grand" },
+        { id: "urgence", label: "Aide d'urgence" },
+        { id: "sante", label: "Santé primaire" },
+        { id: "nutrition", label: "Nutrition" },
+        { id: "protection", label: "Protection" },
+      ],
+      methodsTitle: "Comment payer",
+      methodsLead:
+        "Envoyez votre don via MTN Mobile Money ou Orange Money, puis confirmez-nous si vous le souhaitez.",
+      stepsTitle: "Étapes",
+      steps: [
+        "Choisissez un montant (et une affectation si vous voulez).",
+        "Ouvrez MTN MoMo ou Orange Money sur votre téléphone.",
+        "Envoyez le montant au numéro indiqué, avec la référence HOPE-DON.",
+        "Gardez la confirmation — vous pouvez nous écrire pour un reçu.",
+      ],
+      numberLabel: "Numéro",
+      nameLabel: "Au nom de",
+      copyNumber: "Copier le numéro",
+      copied: "Copié",
+      referenceLabel: "Référence à indiquer",
+      referenceHint: "Ajoutez cette référence dans le message du transfert.",
+      confirmTitle: "Après votre transfert",
+      confirmText:
+        "Écrivez-nous pour confirmer votre don (montant, opérateur, date). Nous pourrons vous remercier et, si besoin, vous envoyer un accusé.",
+      confirmCta: "Confirmer mon don par e-mail",
+      trustTitle: "Confiance",
+      trustItems: [
+        "Association à but non lucratif — Yaoundé, Cameroun",
+        "Vos fonds soutiennent des actions terrain concrètes",
+        "Contact possible pour suivi et reçu",
+      ],
+      placeholderNote:
+        "Les numéros Mobile Money seront mis à jour dès confirmation par l'association.",
+    },
+    legal: {
+      title: "Mentions légales",
+      eyebrow: "Informations",
+      lead: "Éditeur et responsabilité du site.",
+      sections: [
+        {
+          title: "Éditeur",
+          body: "HOPE Bridge for the Needy — association à but non lucratif. Siège social : Yaoundé, Département du Mfoundi, Région du Centre, République du Cameroun.",
+        },
+        {
+          title: "Objet du site",
+          body: "Ce site présente l'association, ses actions et permet de soutenir ses programmes. Les informations sont fournies à titre informatif.",
+        },
+        {
+          title: "Dons",
+          body: "Les dons via Mobile Money sont effectués directement par le donateur vers les numéros indiqués sur la page Don. Conservez votre preuve de transfert.",
+        },
+        {
+          title: "Propriété intellectuelle",
+          body: "Les contenus (textes, images, marques) sont protégés. Toute reproduction non autorisée est interdite.",
+        },
+      ],
+    },
+    privacy: {
+      title: "Confidentialité",
+      eyebrow: "Données personnelles",
+      lead: "Comment nous traitons vos informations.",
+      sections: [
+        {
+          title: "Collecte",
+          body: "Les données collectées via e-mail ou confirmation de don sont utilisées uniquement pour répondre à votre demande et assurer le suivi de votre soutien.",
+        },
+        {
+          title: "Conservation",
+          body: "Les échanges sont conservés le temps nécessaire au traitement, puis archivés ou supprimés selon les besoins légitimes de l'association.",
+        },
+        {
+          title: "Vos droits",
+          body: "Vous pouvez demander l'accès, la rectification ou la suppression de vos données en écrivant à contact@hopebridge.cm.",
+        },
+      ],
+    },
+  },
+  alts: {
+    hero_bg: "Communauté et solidarité — HOPE Bridge",
+    mission: "Main tendue, solidarité humanitaire",
+    care_a: "Soins et santé communautaire",
+    care_b: "Enfants et famille",
+    care_c: "Aide et don solidaire",
+    allinone_a: "Action humanitaire sur le terrain",
+    allinone_b: "Soutien aux personnes vulnérables",
+  },
+};

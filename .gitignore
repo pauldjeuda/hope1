@@ -1,0 +1,16 @@
+node_modules
+dist
+.DS_Store
+*.local
+design/diff
+design/screens
+photos/_view
+public/brand/_mask.png
+__pycache__
+.venv
+venv
+*.pyc
+.playwright
+dev-dist
+.env
+.env.*
