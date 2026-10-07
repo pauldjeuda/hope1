@@ -1,37 +1,31 @@
 type LogoProps = {
   part?: "full" | "mark";
   className?: string;
-  /** Fond derrière le logo : light = logo foncé/couleur, dark = logo cream */
+  /** Fond derrière le logo : light = couleur, dark = variante blanche */
   tone?: "light" | "dark";
 };
 
 export default function Logo({
-  part = "mark",
+  part = "full",
   className = "",
   tone = "light",
 }: LogoProps) {
-  if (part === "full") {
-    return (
-      <img
-        src="/brand/logo-full.png"
-        alt="HOPE Bridge for the Needy"
-        className={`object-contain ${className}`}
-        width={200}
-        height={110}
-      />
-    );
-  }
-
   const src =
-    tone === "dark" ? "/brand/logo-mark-cream.png" : "/brand/logo-mark-green.png";
+    part === "mark"
+      ? tone === "dark"
+        ? "/brand/logo-mark-white.png"
+        : "/brand/logo-mark.png"
+      : tone === "dark"
+        ? "/brand/logo-white.png"
+        : "/brand/logo-full.png";
 
   return (
     <img
       src={src}
-      alt=""
-      className={`rounded-full object-cover ${className}`}
-      width={64}
-      height={64}
+      alt="HOPE Bridge for the Needy"
+      className={`object-contain ${className}`}
+      width={part === "mark" ? 64 : 200}
+      height={part === "mark" ? 64 : 110}
     />
   );
 }

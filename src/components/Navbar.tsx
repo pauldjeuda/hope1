@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { Instagram, Linkedin, Menu, Twitter, X, ArrowRight } from "lucide-react";
-import { NAV, SITE } from "../content/charity";
+import { NAV } from "../content/charity";
 import Logo from "./Logo";
 import { useNavChrome } from "../hooks/useNavChrome";
 
@@ -38,17 +38,15 @@ export default function Navbar() {
       <div className="container-x flex h-[72px] items-center justify-between gap-4">
         <Link
           to="/"
-          className="flex shrink-0 items-center gap-2.5"
+          className="flex shrink-0 items-center"
           onClick={() => setOpen(false)}
+          aria-label="HOPE Bridge for the Needy — Accueil"
         >
-          <Logo part="mark" tone={open ? "light" : tone} className="h-10 w-10" />
-          <span
-            className={`text-[1.15rem] font-bold lowercase tracking-tight transition-colors duration-300 ${
-              open ? "text-forest" : ink
-            }`}
-          >
-            {SITE.brandShort}
-          </span>
+          <Logo
+            part="full"
+            tone={open ? "light" : tone}
+            className="h-11 w-auto max-w-[168px] min-[480px]:h-12 min-[480px]:max-w-[200px]"
+          />
         </Link>
 
         <nav

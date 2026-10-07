@@ -166,7 +166,7 @@ export function buildOrganizationJsonLd() {
     name: SITE_NAME,
     alternateName: ["HOPE Bridge", "hopebridge"],
     url: SITE_URL,
-    logo: absoluteUrl("/brand/logo-mark-512.png"),
+    logo: absoluteUrl("/brand/logo-full.png"),
     image: DEFAULT_OG_IMAGE,
     email: CONTACT.email,
     address: {

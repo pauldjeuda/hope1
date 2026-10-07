@@ -8,7 +8,7 @@ import {
   Send,
   Twitter,
 } from "lucide-react";
-import { FOOTER, SITE } from "../content/charity";
+import { FOOTER } from "../content/charity";
 import Logo from "./Logo";
 
 export default function Footer() {
@@ -22,10 +22,9 @@ export default function Footer() {
     >
       <div className="container-x grid gap-10 pb-10 pt-16 min-[800px]:grid-cols-2 min-[1100px]:grid-cols-4">
         <div>
-          <div className="mb-4 flex items-center gap-2">
-            <Logo part="mark" className="h-11 w-11" />
-            <span className="text-xl font-bold lowercase tracking-tight">{SITE.brandShort}</span>
-          </div>
+          <Link to="/" className="mb-4 inline-block" aria-label="HOPE Bridge for the Needy">
+            <Logo part="full" tone="dark" className="h-14 w-auto max-w-[220px]" />
+          </Link>
           <p className="mb-2 text-xs text-cream/55">
             {FOOTER.rights.replace("{year}", String(year))}
           </p>

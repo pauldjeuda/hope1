@@ -86,14 +86,11 @@ export default function InstallPrompt() {
       <div className="rounded-2xl border border-forest/10 bg-card p-4 shadow-[0_12px_40px_rgba(31,36,24,0.18)]">
         <div className="flex items-start gap-3">
           <img
-            src="/brand/logo-mark-cream.png"
+            src="/brand/logo-mark.png"
             alt=""
             width={44}
             height={44}
-            className="h-11 w-11 shrink-0 rounded-xl bg-forest object-cover"
-            onError={(e) => {
-              (e.currentTarget as HTMLImageElement).src = "/brand/icon-192.png";
-            }}
+            className="h-11 w-11 shrink-0 object-contain"
           />
           <div className="min-w-0 flex-1">
             <p className="font-bold text-forest">{t.installTitle}</p>
