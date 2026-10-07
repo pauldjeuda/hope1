@@ -6,7 +6,7 @@ type Props = {
 
 export default function PageHero({ eyebrow, title, lead }: Props) {
   return (
-    <section className="torn-bottom bg-sage-bg">
+    <section className="torn-bottom bg-sage-bg" data-nav-tone="light">
       <div className="container-x py-14 min-[800px]:py-16">
         {eyebrow && (
           <p className="mb-2 text-xs font-bold uppercase tracking-[0.16em] text-forest/70">

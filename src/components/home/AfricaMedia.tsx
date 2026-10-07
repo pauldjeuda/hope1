@@ -44,19 +44,19 @@ export default function AfricaMedia({
 
   return (
     <div className="relative mx-auto w-full max-w-[460px]">
-      {/* Ratio = masque Afrique recadré (~868×1000) */}
-      <div className="relative aspect-[868/1000] w-full">
+      {/* Ratio = silhouette Afrique solide (860×1000) */}
+      <div className="relative aspect-[860/1000] w-full">
         {/* Relief / ombre sous le continent */}
         <div
-          className="africa-mask pointer-events-none absolute inset-[2%] translate-y-2 bg-forest/30 blur-[1.5px]"
+          className="africa-mask pointer-events-none absolute inset-[1.5%] translate-y-[6px] bg-forest/35 blur-[2px]"
           aria-hidden
         />
 
-        <div className="africa-mask absolute inset-0 overflow-hidden bg-forest/10">
+        <div className="africa-mask absolute inset-0 overflow-hidden bg-forest/15">
           {mode === "video" ? (
             <video
               ref={videoRef}
-              className="h-full w-full scale-[1.18] object-cover object-[48%_22%]"
+              className="h-full w-full scale-[1.2] object-cover object-[48%_22%]"
               autoPlay
               muted
               loop
@@ -70,7 +70,7 @@ export default function AfricaMedia({
             <img
               src={poster}
               alt="HOPE Bridge — action sur le continent africain"
-              className="africa-kenburns h-full w-full scale-[1.14] object-cover object-[48%_22%]"
+              className="africa-kenburns h-full w-full scale-[1.16] object-cover object-[48%_22%]"
             />
           )}
         </div>

@@ -15,7 +15,11 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="torn-footer-top relative z-10 bg-forest text-cream" data-theme="dark">
+    <footer
+      className="torn-footer-top relative z-10 bg-forest text-cream"
+      data-theme="dark"
+      data-nav-tone="dark"
+    >
       <div className="container-x grid gap-10 pb-10 pt-16 min-[800px]:grid-cols-2 min-[1100px]:grid-cols-4">
         <div>
           <div className="mb-4 flex items-center gap-2">

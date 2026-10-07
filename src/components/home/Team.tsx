@@ -20,7 +20,7 @@ export default function Team() {
         </div>
       </div>
 
-      <div className="mt-16 bg-forest py-10">
+      <div className="mt-16 bg-forest py-10" data-nav-tone="dark">
         <div className="container-x flex flex-wrap items-center justify-center gap-x-10 gap-y-4">
           {PARTNERS.map((p) => (
             <span

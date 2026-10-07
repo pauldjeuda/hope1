@@ -1,9 +1,15 @@
 type LogoProps = {
   part?: "full" | "mark";
   className?: string;
+  /** Fond derrière le logo : light = logo foncé/couleur, dark = logo cream */
+  tone?: "light" | "dark";
 };
 
-export default function Logo({ part = "mark", className = "" }: LogoProps) {
+export default function Logo({
+  part = "mark",
+  className = "",
+  tone = "light",
+}: LogoProps) {
   if (part === "full") {
     return (
       <img
@@ -16,9 +22,12 @@ export default function Logo({ part = "mark", className = "" }: LogoProps) {
     );
   }
 
+  const src =
+    tone === "dark" ? "/brand/logo-mark-cream.png" : "/brand/logo-mark-green.png";
+
   return (
     <img
-      src="/brand/logo-mark-cream.png"
+      src={src}
       alt=""
       className={`rounded-full object-cover ${className}`}
       width={64}

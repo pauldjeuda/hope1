@@ -3,64 +3,86 @@ import { Link, NavLink } from "react-router-dom";
 import { Instagram, Linkedin, Menu, Twitter, X, ArrowRight } from "lucide-react";
 import { NAV, SITE } from "../content/charity";
 import Logo from "./Logo";
+import { useNavChrome } from "../hooks/useNavChrome";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const { glass, tone } = useNavChrome(72);
+  const onDark = tone === "dark";
+  const ink = onDark ? "text-cream" : "text-forest";
+  const muted = onDark ? "text-cream/75 hover:text-cream" : "text-muted hover:text-forest";
+  const active = onDark ? "text-cream" : "text-forest";
+
+  // Morph : crème sur fond clair, forêt légère sur fond sombre
+  const glassBg = onDark
+    ? `rgba(47, 56, 36, ${0.28 + glass * 0.55})`
+    : `rgba(243, 241, 236, ${glass})`;
+  const borderAlpha = onDark ? 0.12 + glass * 0.1 : 0.06 + glass * 0.1;
 
   return (
-    <header className={`fixed inset-x-0 top-0 z-50 ${open ? "bg-page shadow-sm" : ""}`}>
+    <header
+      className="fixed inset-x-0 top-0 z-50 transition-[background-color,box-shadow,border-color] duration-300 ease-out"
+      style={{
+        backgroundColor: open ? "var(--page)" : glassBg,
+        backdropFilter: open ? "none" : "blur(18px) saturate(1.25)",
+        WebkitBackdropFilter: open ? "none" : "blur(18px) saturate(1.25)",
+        borderBottom: open
+          ? "1px solid rgba(63, 74, 46, 0.08)"
+          : `1px solid rgba(63, 74, 46, ${borderAlpha})`,
+        boxShadow:
+          !open && glass > 0.55
+            ? `0 8px 28px rgba(47, 56, 36, ${0.06 + (glass - 0.55) * 0.12})`
+            : "none",
+      }}
+    >
       <div className="container-x flex h-[72px] items-center justify-between gap-4">
-        {/* Zone adaptive : le texte s’inverse selon l’arrière-plan (style Shu Anta) */}
-        <div
-          className={`flex min-w-0 flex-1 items-center justify-between gap-4 ${
-            open ? "" : "mix-blend-difference"
-          }`}
+        <Link
+          to="/"
+          className="flex shrink-0 items-center gap-2.5"
+          onClick={() => setOpen(false)}
         >
-          <Link
-            to="/"
-            className="flex shrink-0 items-center gap-2.5"
-            onClick={() => setOpen(false)}
+          <Logo part="mark" tone={open ? "light" : tone} className="h-10 w-10" />
+          <span
+            className={`text-[1.15rem] font-bold lowercase tracking-tight transition-colors duration-300 ${
+              open ? "text-forest" : ink
+            }`}
           >
-            <Logo
-              part="mark"
-              className={`h-10 w-10 ${open ? "" : "brightness-0 invert"}`}
-            />
-            <span
-              className={`text-[1.15rem] font-bold lowercase tracking-tight ${
-                open ? "text-forest" : "text-white"
-              }`}
+            {SITE.brandShort}
+          </span>
+        </Link>
+
+        <nav
+          className="hidden items-center gap-6 lg:flex"
+          aria-label="Navigation principale"
+        >
+          {NAV.map((item) => (
+            <NavLink
+              key={item.path}
+              to={item.path}
+              end={item.path === "/"}
+              className={({ isActive }) =>
+                `text-[0.92rem] font-medium transition-colors duration-300 ${
+                  isActive ? active : muted
+                }`
+              }
             >
-              {SITE.brandShort}
-            </span>
-          </Link>
+              {item.label}
+            </NavLink>
+          ))}
+        </nav>
 
-          <nav
-            className="hidden items-center gap-6 lg:flex"
-            aria-label="Navigation principale"
+        <div className="hidden items-center gap-4 lg:flex">
+          <div
+            className={`flex items-center gap-2 transition-colors duration-300 ${
+              onDark ? "text-cream/80" : "text-forest/70"
+            }`}
           >
-            {NAV.map((item) => (
-              <NavLink
-                key={item.path}
-                to={item.path}
-                end={item.path === "/"}
-                className={({ isActive }) =>
-                  `text-[0.92rem] font-medium text-white transition ${
-                    isActive ? "opacity-100" : "opacity-75 hover:opacity-100"
-                  }`
-                }
-              >
-                {item.label}
-              </NavLink>
-            ))}
-          </nav>
-
-          <div className="hidden items-center gap-3 text-white lg:flex">
             <a
               href="https://twitter.com"
               target="_blank"
               rel="noreferrer"
               aria-label="Twitter"
-              className="opacity-80 transition hover:opacity-100"
+              className="transition hover:opacity-100 opacity-80"
             >
               <Twitter className="h-4 w-4" strokeWidth={1.6} />
             </a>
@@ -69,7 +91,7 @@ export default function Navbar() {
               target="_blank"
               rel="noreferrer"
               aria-label="LinkedIn"
-              className="opacity-80 transition hover:opacity-100"
+              className="transition hover:opacity-100 opacity-80"
             >
               <Linkedin className="h-4 w-4" strokeWidth={1.6} />
             </a>
@@ -78,29 +100,27 @@ export default function Navbar() {
               target="_blank"
               rel="noreferrer"
               aria-label="Instagram"
-              className="opacity-80 transition hover:opacity-100"
+              className="transition hover:opacity-100 opacity-80"
             >
               <Instagram className="h-4 w-4" strokeWidth={1.6} />
             </a>
           </div>
-
-          <button
-            type="button"
-            className={`flex h-10 w-10 items-center justify-center lg:hidden ${
-              open ? "text-forest" : "text-white"
-            }`}
-            aria-label={open ? "Fermer le menu" : "Ouvrir le menu"}
-            onClick={() => setOpen((v) => !v)}
-          >
-            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-          </button>
+          <Link to="/don" className="btn-mustard">
+            Faire un don
+            <ArrowRight className="h-4 w-4" strokeWidth={2} />
+          </Link>
         </div>
 
-        {/* CTA hors blend : garde la couleur mustard */}
-        <Link to="/don" className="btn-mustard relative z-10 hidden shrink-0 lg:inline-flex">
-          Faire un don
-          <ArrowRight className="h-4 w-4" strokeWidth={2} />
-        </Link>
+        <button
+          type="button"
+          className={`flex h-10 w-10 items-center justify-center transition-colors duration-300 lg:hidden ${
+            open ? "text-forest" : ink
+          }`}
+          aria-label={open ? "Fermer le menu" : "Ouvrir le menu"}
+          onClick={() => setOpen((v) => !v)}
+        >
+          {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+        </button>
       </div>
 
       {open && (

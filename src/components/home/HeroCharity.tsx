@@ -4,7 +4,7 @@ import AfricaMedia from "./AfricaMedia";
 
 export default function HeroCharity() {
   return (
-    <section className="torn-bottom relative overflow-hidden bg-sage-bg">
+    <section className="torn-bottom relative overflow-hidden bg-sage-bg" data-nav-tone="light">
       <div
         className="pointer-events-none absolute inset-0 opacity-[0.22]"
         style={{
