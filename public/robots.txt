@@ -1,0 +1,8 @@
+# HOPE Bridge for the Needy
+User-agent: *
+Allow: /
+
+Disallow: /mentions-legales
+Disallow: /confidentialite
+
+Sitemap: https://hopebridge.cm/sitemap.xml

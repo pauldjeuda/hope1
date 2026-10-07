@@ -1,244 +1,131 @@
-import { useEffect, useId, useRef, useState } from "react";
-import { Link, NavLink, useLocation } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { useState } from "react";
+import { Link, NavLink } from "react-router-dom";
+import { Instagram, Linkedin, Menu, Twitter, X, ArrowRight } from "lucide-react";
+import { NAV, SITE } from "../content/charity";
 import Logo from "./Logo";
-import MobileMenu from "./MobileMenu";
-import { useLocale, useT } from "../i18n/LocaleContext";
-
-type NavInk = "dark" | "cream";
-
-function sampleImageLuminance(img: HTMLImageElement): number {
-  try {
-    const canvas = document.createElement("canvas");
-    const w = 80;
-    const h = 28;
-    canvas.width = w;
-    canvas.height = h;
-    const ctx = canvas.getContext("2d", { willReadFrequently: true });
-    if (!ctx || !img.naturalWidth) return 0.5;
-    ctx.drawImage(
-      img,
-      0,
-      0,
-      img.naturalWidth,
-      Math.max(1, img.naturalHeight * 0.28),
-      0,
-      0,
-      w,
-      h,
-    );
-    const { data } = ctx.getImageData(0, 0, w, h);
-    let sum = 0;
-    for (let i = 0; i < data.length; i += 4) {
-      sum += (0.299 * data[i] + 0.587 * data[i + 1] + 0.114 * data[i + 2]) / 255;
-    }
-    return sum / (data.length / 4);
-  } catch {
-    return 0.5;
-  }
-}
 
 export default function Navbar() {
-  const [ink, setInk] = useState<NavInk>("dark");
-  const [heroBright, setHeroBright] = useState(true);
-  const [menuOpen, setMenuOpen] = useState(false);
-  const t = useT();
-  const { locale, toggleLocale } = useLocale();
-  const navId = useId();
-  const barRef = useRef<HTMLDivElement>(null);
-  const location = useLocation();
-
-  useEffect(() => {
-    const img = document.querySelector("#hero img") as HTMLImageElement | null;
-    if (!img) {
-      setHeroBright(true);
-      return;
-    }
-
-    const analyze = () => {
-      const lum = sampleImageLuminance(img);
-      const bright = lum >= 0.42;
-      setHeroBright(bright);
-      document.getElementById("hero")?.setAttribute(
-        "data-nav-ink",
-        bright ? "dark" : "cream",
-      );
-    };
-
-    if (img.complete && img.naturalWidth) analyze();
-    else img.addEventListener("load", analyze, { once: true });
-  }, [location.pathname]);
-
-  useEffect(() => {
-    const resolveInk = (): NavInk => {
-      const bar = barRef.current;
-      const y = bar
-        ? bar.getBoundingClientRect().top + bar.getBoundingClientRect().height / 2
-        : 36;
-
-      const themed = document.querySelectorAll<HTMLElement>("[data-theme]");
-      let theme: string | null = null;
-      themed.forEach((el) => {
-        const r = el.getBoundingClientRect();
-        if (r.top <= y && r.bottom >= y) {
-          theme = el.getAttribute("data-theme");
-        }
-      });
-
-      const footer = document.querySelector("footer");
-      if (footer) {
-        const fr = footer.getBoundingClientRect();
-        if (fr.top <= y && fr.bottom >= y) return "cream";
-      }
-
-      if (theme === "photo") {
-        const hero = document.getElementById("hero");
-        if (hero) {
-          const hr = hero.getBoundingClientRect();
-          if (hr.top <= y && hr.bottom >= y) {
-            return heroBright ? "dark" : "cream";
-          }
-        }
-        return "dark";
-      }
-      if (theme === "dark") return "cream";
-      return "dark";
-    };
-
-    let ticking = false;
-    const update = () => {
-      ticking = false;
-      setInk(resolveInk());
-    };
-    const onScrollOrResize = () => {
-      if (ticking) return;
-      ticking = true;
-      requestAnimationFrame(update);
-    };
-
-    update();
-    window.addEventListener("scroll", onScrollOrResize, { passive: true });
-    window.addEventListener("resize", onScrollOrResize);
-    return () => {
-      window.removeEventListener("scroll", onScrollOrResize);
-      window.removeEventListener("resize", onScrollOrResize);
-    };
-  }, [heroBright, location.pathname]);
-
-  useEffect(() => {
-    const onResize = () => {
-      if (window.matchMedia("(min-width: 1024px)").matches) setMenuOpen(false);
-    };
-    window.addEventListener("resize", onResize);
-    return () => window.removeEventListener("resize", onResize);
-  }, []);
-
-  const glass =
-    ink === "dark"
-      ? "bg-[rgba(238,236,232,0.72)] text-[var(--ink-green)] border-[rgba(47,58,38,0.16)]"
-      : "bg-[rgba(255,255,255,0.18)] text-[var(--cream)] border-[rgba(255,255,255,0.45)]";
+  const [open, setOpen] = useState(false);
 
   return (
-    <header className="pointer-events-none fixed inset-x-0 top-0 z-50">
-      <div
-        className="pointer-events-auto relative mx-auto w-full max-w-[1600px]"
-        style={{
-          paddingInline: "clamp(16px, calc(var(--u) * 8.5), 96px)",
-          paddingTop: "clamp(10px, calc(var(--u) * 2.8), 22px)",
-        }}
-      >
-        <div className="relative">
-          <div
-            ref={barRef}
-            id={navId}
-            className={`flex items-center gap-3 border backdrop-blur-[14px] backdrop-saturate-[120%] transition-[background-color,color,border-color] duration-300 ease-out ${glass}`}
-            style={{
-              height: "52px",
-              borderRadius: "999px",
-              paddingInline: "clamp(14px, calc(var(--u) * 2), 22px)",
-            }}
-            data-nav-ink={ink}
+    <header className={`fixed inset-x-0 top-0 z-50 ${open ? "bg-page shadow-sm" : ""}`}>
+      <div className="container-x flex h-[72px] items-center justify-between gap-4">
+        {/* Zone adaptive : le texte s’inverse selon l’arrière-plan (style Shu Anta) */}
+        <div
+          className={`flex min-w-0 flex-1 items-center justify-between gap-4 ${
+            open ? "" : "mix-blend-difference"
+          }`}
+        >
+          <Link
+            to="/"
+            className="flex shrink-0 items-center gap-2.5"
+            onClick={() => setOpen(false)}
           >
-            <Link
-              to="/"
-              className="flex h-9 w-9 shrink-0 items-center justify-center overflow-hidden rounded-full sm:h-10 sm:w-10"
-              aria-label={`HOPE Bridge — ${t.nav.home}`}
+            <Logo
+              part="mark"
+              className={`h-10 w-10 ${open ? "" : "brightness-0 invert"}`}
+            />
+            <span
+              className={`text-[1.15rem] font-bold lowercase tracking-tight ${
+                open ? "text-forest" : "text-white"
+              }`}
             >
-              <Logo
-                part="mark"
-                theme="light"
-                className="h-full w-full scale-[1.08]"
-              />
-            </Link>
+              {SITE.brandShort}
+            </span>
+          </Link>
 
-            <nav
-              className="hidden min-w-0 flex-1 items-center justify-center gap-x-[clamp(10px,1.4vw,22px)] xl:gap-x-[clamp(14px,1.8vw,28px)] lg:flex"
-              aria-label={t.nav.mainNav}
+          <nav
+            className="hidden items-center gap-6 lg:flex"
+            aria-label="Navigation principale"
+          >
+            {NAV.map((item) => (
+              <NavLink
+                key={item.path}
+                to={item.path}
+                end={item.path === "/"}
+                className={({ isActive }) =>
+                  `text-[0.92rem] font-medium text-white transition ${
+                    isActive ? "opacity-100" : "opacity-75 hover:opacity-100"
+                  }`
+                }
+              >
+                {item.label}
+              </NavLink>
+            ))}
+          </nav>
+
+          <div className="hidden items-center gap-3 text-white lg:flex">
+            <a
+              href="https://twitter.com"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Twitter"
+              className="opacity-80 transition hover:opacity-100"
             >
-              {t.navItems.map((item) => (
-                <NavLink
-                  key={item.path}
-                  to={item.path}
-                  end={item.path === "/"}
-                  className={({ isActive }) =>
-                    `shrink-0 whitespace-nowrap font-sans font-normal transition-opacity hover:opacity-80 ${
-                      isActive ? "opacity-100 underline underline-offset-4" : "opacity-90"
-                    }`
-                  }
-                  style={{ fontSize: "clamp(11px, calc(var(--u) * 1.15), 14px)" }}
-                >
-                  {item.label}
-                </NavLink>
-              ))}
-            </nav>
-
-            <div className="ml-auto flex shrink-0 items-center gap-2 sm:gap-3">
-              <button
-                type="button"
-                className="flex h-10 w-10 items-center justify-center lg:hidden"
-                aria-label={menuOpen ? t.nav.closeMenu : t.nav.openMenu}
-                aria-expanded={menuOpen}
-                aria-controls="mobile-menu"
-                onClick={() => setMenuOpen((v) => !v)}
-              >
-                {menuOpen ? (
-                  <X strokeWidth={1.25} className="h-5 w-5" />
-                ) : (
-                  <Menu strokeWidth={1.25} className="h-5 w-5" />
-                )}
-              </button>
-              <button
-                type="button"
-                onClick={toggleLocale}
-                className="flex h-10 min-w-10 items-center justify-center px-1.5 font-sans tracking-[0.06em]"
-                style={{ fontSize: "11px" }}
-                aria-label={t.nav.langSwitch}
-              >
-                <span className={locale === "fr" ? "opacity-100" : "opacity-40"}>FR</span>
-                <span className="mx-0.5 opacity-35">/</span>
-                <span className={locale === "en" ? "opacity-100" : "opacity-40"}>EN</span>
-              </button>
-              <Link
-                to="/don"
-                className={`hidden items-center justify-center rounded-full px-3.5 font-sans font-medium transition-opacity hover:opacity-90 sm:inline-flex ${
-                  ink === "dark"
-                    ? "bg-[var(--brand-orange)] text-white"
-                    : "bg-[var(--brand-orange)] text-white"
-                }`}
-                style={{ height: "34px", fontSize: "12px" }}
-              >
-                {t.nav.donate}
-              </Link>
-            </div>
+              <Twitter className="h-4 w-4" strokeWidth={1.6} />
+            </a>
+            <a
+              href="https://linkedin.com"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="LinkedIn"
+              className="opacity-80 transition hover:opacity-100"
+            >
+              <Linkedin className="h-4 w-4" strokeWidth={1.6} />
+            </a>
+            <a
+              href="https://instagram.com"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Instagram"
+              className="opacity-80 transition hover:opacity-100"
+            >
+              <Instagram className="h-4 w-4" strokeWidth={1.6} />
+            </a>
           </div>
 
-          <MobileMenu
-            open={menuOpen}
-            onClose={() => setMenuOpen(false)}
-            ink={ink}
-          />
+          <button
+            type="button"
+            className={`flex h-10 w-10 items-center justify-center lg:hidden ${
+              open ? "text-forest" : "text-white"
+            }`}
+            aria-label={open ? "Fermer le menu" : "Ouvrir le menu"}
+            onClick={() => setOpen((v) => !v)}
+          >
+            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
         </div>
+
+        {/* CTA hors blend : garde la couleur mustard */}
+        <Link to="/don" className="btn-mustard relative z-10 hidden shrink-0 lg:inline-flex">
+          Faire un don
+          <ArrowRight className="h-4 w-4" strokeWidth={2} />
+        </Link>
       </div>
+
+      {open && (
+        <div className="border-t border-forest/10 bg-page px-4 py-4 shadow-card lg:hidden">
+          <nav className="flex flex-col gap-1">
+            {NAV.map((item) => (
+              <Link
+                key={item.path}
+                to={item.path}
+                onClick={() => setOpen(false)}
+                className="rounded-xl px-3 py-3 font-medium text-forest hover:bg-soft"
+              >
+                {item.label}
+              </Link>
+            ))}
+            <Link
+              to="/don"
+              onClick={() => setOpen(false)}
+              className="btn-mustard mt-2 w-full"
+            >
+              Faire un don
+            </Link>
+          </nav>
+        </div>
+      )}
     </header>
   );
 }

@@ -1,4 +1,3 @@
-@import "@fontsource-variable/bodoni-moda";
 @import "@fontsource-variable/raleway";
 
 @tailwind base;
@@ -6,22 +5,19 @@
 @tailwind utilities;
 
 :root {
-  /* Palette site (Shu Anta) + accents logo HOPE Bridge */
-  --footer: #24324a;
-  --page: #eeece8;
-  --ink-green: #1f3d5c;
-  --ink: #2a2a28;
-  --sage: #2f8f4e;
-  --sage-soft: #7aaf8a;
-  --cream: #f4f0e8;
-  --outline: #9a9a92;
-  --brand-blue: #2e75b6;
-  --brand-orange: #f7941d;
-  --font-display: "Bodoni Moda Variable", "Bodoni Moda", serif;
-  --font-sans: "Raleway Variable", "Raleway", sans-serif;
-  /* 1u ≈ 1 % de la largeur de composition (plafonnée à 1600) */
-  --stage-w: min(100vw, 1600px);
-  --u: calc(var(--stage-w) / 100);
+  --forest: #3f4a2e;
+  --forest-deep: #2f3824;
+  --sage-bg: #c9d6b8;
+  --sage-mid: #b5c7a0;
+  --mustard: #e8b92d;
+  --mustard-deep: #d4a61f;
+  --cream: #f7f4ee;
+  --page: #f3f1ec;
+  --ink: #1f2418;
+  --muted: #5c6354;
+  --card: #ffffff;
+  --soft: #eef1e8;
+  --font-sans: "Raleway Variable", "Raleway", system-ui, sans-serif;
 }
 
 *,
@@ -40,22 +36,14 @@ body,
   min-height: 100%;
 }
 
-html {
-  overflow-x: clip;
-}
-
 body {
   margin: 0;
   background: var(--page);
   color: var(--ink);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-  /* clip (pas hidden) : évite de casser position:fixed de la navbar */
-  overflow-x: clip;
 }
 
-/* Ne pas forcer height:auto — sinon object-cover / h-full ne remplissent pas les cadres */
 img {
   max-width: 100%;
   display: block;
@@ -74,65 +62,196 @@ button {
 }
 
 :focus-visible {
-  outline: 2px solid var(--sage);
+  outline: 2px solid var(--mustard);
   outline-offset: 3px;
 }
 
-.stage {
+.container-x {
   width: 100%;
-  max-width: 1600px;
+  max-width: 1180px;
   margin-inline: auto;
-  position: relative;
-  container-type: inline-size;
+  padding-inline: clamp(16px, 4vw, 32px);
 }
 
-/* Cadres photo : l’image remplit toujours le slot */
-.media-fill {
-  position: relative;
-  display: block;
-  overflow: hidden;
-  width: 100%;
-  height: 100%;
-  border-radius: 0;
+.btn-forest {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  min-height: 46px;
+  padding: 0.7rem 1.6rem;
+  border-radius: 999px;
+  background: var(--forest);
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.92rem;
+  transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
-.media-fill > picture,
-.media-fill > img {
+.btn-forest:hover {
+  opacity: 0.92;
+}
+
+.btn-mustard {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  min-height: 42px;
+  padding: 0.65rem 1.35rem;
+  border-radius: 999px;
+  background: var(--mustard);
+  color: var(--forest-deep);
+  font-weight: 700;
+  font-size: 0.88rem;
+  transition: opacity 0.2s ease;
+}
+
+.btn-mustard:hover {
+  opacity: 0.92;
+}
+
+.torn-bottom {
+  position: relative;
+}
+
+.torn-bottom::after {
+  content: "";
   position: absolute;
-  inset: 0;
-  width: 100%;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 28px;
+  background: var(--page);
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 28' preserveAspectRatio='none'%3E%3Cpath fill='black' d='M0 18 Q30 4 60 16 T120 14 T180 18 T240 10 T300 16 T360 12 T420 18 T480 8 T540 16 T600 12 T660 18 T720 10 T780 16 T840 12 T900 18 T960 10 T1020 16 T1080 12 T1140 18 T1200 14 V28 H0Z'/%3E%3C/svg%3E");
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 28' preserveAspectRatio='none'%3E%3Cpath fill='black' d='M0 18 Q30 4 60 16 T120 14 T180 18 T240 10 T300 16 T360 12 T420 18 T480 8 T540 16 T600 12 T660 18 T720 10 T780 16 T840 12 T900 18 T960 10 T1020 16 T1080 12 T1140 18 T1200 14 V28 H0Z'/%3E%3C/svg%3E");
+  mask-size: 100% 100%;
+  -webkit-mask-size: 100% 100%;
+  pointer-events: none;
+}
+
+.torn-bottom-soft::after {
+  background: var(--soft);
+}
+
+.torn-bottom-forest::after {
+  background: var(--forest);
+  height: 36px;
+}
+
+.torn-footer-top {
+  position: relative;
+  margin-top: -1px;
+}
+
+.torn-footer-top::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -28px;
+  height: 30px;
+  background: var(--forest);
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 30' preserveAspectRatio='none'%3E%3Cpath fill='black' d='M0 12 Q40 28 80 14 T160 16 T240 10 T320 18 T400 12 T480 20 T560 10 T640 16 T720 12 T800 20 T880 10 T960 16 T1040 12 T1120 18 T1200 12 V30 H0Z'/%3E%3C/svg%3E");
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 30' preserveAspectRatio='none'%3E%3Cpath fill='black' d='M0 12 Q40 28 80 14 T160 16 T240 10 T320 18 T400 12 T480 20 T560 10 T640 16 T720 12 T800 20 T880 10 T960 16 T1040 12 T1120 18 T1200 12 V30 H0Z'/%3E%3C/svg%3E");
+  mask-size: 100% 100%;
+  -webkit-mask-size: 100% 100%;
+  pointer-events: none;
+}
+
+.africa-mask {
+  /* Silhouette géographique exacte (continent + Madagascar) */
+  -webkit-mask-image: url("/brand/africa-mask-alpha.png");
+  mask-image: url("/brand/africa-mask-alpha.png");
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-mode: alpha;
+  mask-mode: alpha;
+}
+
+.africa-stroke {
+  background: var(--forest);
+  opacity: 0.12;
+  transform: scale(1.04);
+  z-index: -1;
+}
+
+@keyframes africa-kenburns {
+  from {
+    transform: scale(1.08) translate(0, 0);
+  }
+  to {
+    transform: scale(1.18) translate(-2%, -1%);
+  }
+}
+
+.africa-kenburns {
+  animation: africa-kenburns 18s ease-in-out infinite alternate;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .africa-kenburns {
+    animation: none;
+  }
+}
+
+.highlight-word {
+  position: relative;
+  display: inline-block;
+  color: inherit;
+  z-index: 0;
+}
+
+.highlight-word::after {
+  content: "";
+  position: absolute;
+  left: -4%;
+  right: -4%;
+  bottom: 0.08em;
+  height: 0.38em;
+  background: var(--mustard);
+  z-index: -1;
+  border-radius: 2px;
+  transform: rotate(-1.5deg);
+}
+
+.progress-track {
+  height: 8px;
+  border-radius: 999px;
+  background: #e5e8df;
+  overflow: hidden;
+}
+
+.progress-fill {
   height: 100%;
+  border-radius: 999px;
+  background: var(--forest);
 }
 
-.media-fill img {
-  width: 100%;
-  height: 100%;
-  max-width: none;
-  object-fit: cover;
-  object-position: center;
-  border-radius: 0 !important;
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-#hero,
-#hero *,
-.media-fill,
-.stage img {
-  border-radius: 0;
-}
-
-#hero img {
-  border-radius: 0 !important;
-}
-
-.reveal {
-  opacity: 0;
-  transform: translateY(12px);
-  transition: opacity 600ms ease, transform 600ms ease;
-}
-
-.reveal.is-visible {
-  opacity: 1;
-  transform: translateY(0);
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -140,24 +259,8 @@ button {
     scroll-behavior: auto;
   }
 
-  .reveal {
-    opacity: 1;
-    transform: none;
-    transition: none;
-  }
-}
-
-@layer utilities {
-  .font-display {
-    font-family: var(--font-display);
-    font-weight: 400;
-    letter-spacing: -0.01em;
-    line-height: 0.8;
-  }
-
-  .font-display-wide {
-    transform: scaleX(1.03);
-    transform-origin: center bottom;
-    will-change: transform;
+  .africa-kenburns,
+  [class*="animate-"] {
+    animation: none !important;
   }
 }

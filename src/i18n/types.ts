@@ -106,11 +106,21 @@ export type Messages = {
       allocations: { id: string; label: string }[];
       methodsTitle: string;
       methodsLead: string;
+      pickMethod: string;
+      continue: string;
+      back: string;
+      stepAmount: string;
+      stepPay: string;
+      stepDone: string;
+      sendNow: string;
+      openWallet: string;
+      summaryTitle: string;
       stepsTitle: string;
       steps: string[];
       numberLabel: string;
       nameLabel: string;
       copyNumber: string;
+      copyRef: string;
       copied: string;
       referenceLabel: string;
       referenceHint: string;
@@ -120,6 +130,7 @@ export type Messages = {
       trustTitle: string;
       trustItems: string[];
       placeholderNote: string;
+      secureNote: string;
     };
     legal: {
       title: string;
@@ -133,6 +144,13 @@ export type Messages = {
       lead: string;
       sections: { title: string; body: string }[];
     };
+  };
+  pwa: {
+    installTitle: string;
+    installText: string;
+    installCta: string;
+    iosHint: string;
+    dismiss: string;
   };
   alts: {
     hero_bg: string;

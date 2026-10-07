@@ -1,14 +1,35 @@
 ﻿{
+  "id": "/",
   "name": "HOPE Bridge for the Needy",
   "short_name": "HOPE Bridge",
-  "description": "Association humanitaire a Yaounde — aide d'urgence, sante, nutrition et protection.",
+  "description": "Association humanitaire à Yaoundé — aide d'urgence, santé, nutrition et protection.",
   "start_url": "/",
+  "scope": "/",
   "display": "standalone",
-  "background_color": "#eeece8",
-  "theme_color": "#24324a",
+  "orientation": "any",
+  "background_color": "#f3f1ec",
+  "theme_color": "#3f4a2e",
   "lang": "fr",
+  "dir": "ltr",
+  "categories": ["lifestyle", "social"],
   "icons": [
-    { "src": "/brand/icon-192.png", "sizes": "192x192", "type": "image/png" },
-    { "src": "/brand/icon-512.png", "sizes": "512x512", "type": "image/png" }
+    {
+      "src": "/brand/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/brand/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/brand/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
   ]
 }

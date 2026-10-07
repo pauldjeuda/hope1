@@ -5,18 +5,25 @@ export default {
   theme: {
     extend: {
       colors: {
-        page: "var(--page)",
-        footer: "var(--footer)",
-        "ink-green": "var(--ink-green)",
-        ink: "var(--ink)",
-        sage: "var(--sage)",
-        "sage-soft": "var(--sage-soft)",
+        forest: "var(--forest)",
+        "forest-deep": "var(--forest-deep)",
+        "sage-bg": "var(--sage-bg)",
+        "sage-mid": "var(--sage-mid)",
+        mustard: "var(--mustard)",
         cream: "var(--cream)",
-        outline: "var(--outline)",
+        page: "var(--page)",
+        ink: "var(--ink)",
+        muted: "var(--muted)",
+        soft: "var(--soft)",
       },
       fontFamily: {
-        display: ["var(--font-display)", "serif"],
         sans: ["var(--font-sans)", "sans-serif"],
+      },
+      boxShadow: {
+        card: "0 12px 40px rgba(47, 56, 36, 0.08)",
+      },
+      borderRadius: {
+        blob: "42% 58% 55% 45% / 48% 42% 58% 52%",
       },
     },
   },

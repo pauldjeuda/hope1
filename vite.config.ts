@@ -35,8 +35,8 @@ export default defineConfig({
         scope: "/",
         display: "standalone",
         orientation: "any",
-        background_color: "#eeece8",
-        theme_color: "#24324a",
+        background_color: "#f3f1ec",
+        theme_color: "#3f4a2e",
         categories: ["lifestyle", "social"],
         icons: [
           {
@@ -61,7 +61,9 @@ export default defineConfig({
       },
       workbox: {
         navigateFallback: "/index.html",
-        globPatterns: ["**/*.{js,css,html,ico,png,svg,webp,jpg,jpeg,woff2,webmanifest}"],
+        globPatterns: [
+          "**/*.{js,css,html,ico,png,svg,webp,jpg,jpeg,woff2,webmanifest}",
+        ],
         runtimeCaching: [
           {
             urlPattern: ({ request }) => request.destination === "image",
@@ -69,8 +71,22 @@ export default defineConfig({
             options: {
               cacheName: "hope-bridge-images",
               expiration: {
-                maxEntries: 100,
+                maxEntries: 120,
                 maxAgeSeconds: 60 * 60 * 24 * 30,
+              },
+            },
+          },
+          {
+            urlPattern: ({ request }) =>
+              request.destination === "font" ||
+              request.destination === "style" ||
+              request.destination === "script",
+            handler: "StaleWhileRevalidate",
+            options: {
+              cacheName: "hope-bridge-assets",
+              expiration: {
+                maxEntries: 80,
+                maxAgeSeconds: 60 * 60 * 24 * 14,
               },
             },
           },
