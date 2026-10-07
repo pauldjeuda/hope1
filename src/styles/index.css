@@ -18,6 +18,9 @@
   --card: #ffffff;
   --soft: #eef1e8;
   --font-sans: "Raleway Variable", "Raleway", system-ui, sans-serif;
+  --nav-h: 72px;
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
 }
 
 *,
@@ -28,6 +31,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: clip;
 }
 
 html,
@@ -38,10 +42,13 @@ body,
 
 body {
   margin: 0;
+  overflow-x: clip;
   background: var(--page);
   color: var(--ink);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 img {
@@ -71,6 +78,11 @@ button {
   max-width: 1180px;
   margin-inline: auto;
   padding-inline: clamp(16px, 4vw, 32px);
+}
+
+/* Décalage contenu sous navbar fixe */
+.nav-offset {
+  padding-top: calc(var(--nav-h) + var(--safe-top));
 }
 
 .btn-forest {
@@ -109,6 +121,14 @@ button {
 
 .btn-mustard:hover {
   opacity: 0.92;
+}
+
+@media (max-width: 479px) {
+  .btn-forest,
+  .btn-mustard {
+    width: 100%;
+    max-width: 100%;
+  }
 }
 
 .torn-bottom {

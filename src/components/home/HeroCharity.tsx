@@ -24,7 +24,7 @@ export default function HeroCharity() {
         aria-hidden
       />
 
-      <div className="container-x relative grid items-center gap-8 py-12 min-[900px]:grid-cols-[1.05fr_0.95fr] min-[900px]:gap-6 min-[900px]:py-16">
+      <div className="container-x nav-offset relative grid items-center gap-8 pb-12 pt-6 min-[480px]:pb-14 min-[900px]:grid-cols-[1.05fr_0.95fr] min-[900px]:gap-6 min-[900px]:py-16 min-[900px]:pt-16">
         <div className="relative z-10 max-w-xl">
           <h1 className="text-[clamp(2.35rem,5.2vw,4rem)] font-extrabold leading-[1.08] tracking-tight text-forest">
             {HERO.titleBefore}{" "}

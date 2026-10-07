@@ -23,6 +23,7 @@ export default function Navbar() {
     <header
       className="fixed inset-x-0 top-0 z-50 transition-[background-color,box-shadow,border-color] duration-300 ease-out"
       style={{
+        paddingTop: "env(safe-area-inset-top, 0px)",
         backgroundColor: open ? "var(--page)" : glassBg,
         backdropFilter: open ? "none" : "blur(18px) saturate(1.25)",
         WebkitBackdropFilter: open ? "none" : "blur(18px) saturate(1.25)",
@@ -45,7 +46,7 @@ export default function Navbar() {
           <Logo
             part="full"
             tone={open ? "light" : tone}
-            className="h-11 w-auto max-w-[168px] min-[480px]:h-12 min-[480px]:max-w-[200px]"
+            className="h-9 w-auto max-w-[132px] min-[380px]:h-10 min-[380px]:max-w-[148px] min-[480px]:h-12 min-[480px]:max-w-[200px]"
           />
         </Link>
 
@@ -122,7 +123,7 @@ export default function Navbar() {
       </div>
 
       {open && (
-        <div className="border-t border-forest/10 bg-page px-4 py-4 shadow-card lg:hidden">
+        <div className="max-h-[min(70vh,calc(100dvh-var(--nav-h)-var(--safe-top)))] overflow-y-auto border-t border-forest/10 bg-page px-4 py-4 shadow-card lg:hidden">
           <nav className="flex flex-col gap-1">
             {NAV.map((item) => (
               <Link

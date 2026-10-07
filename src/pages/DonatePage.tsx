@@ -78,15 +78,15 @@ export default function DonatePage() {
 
       <section className="container-x py-10 min-[800px]:py-14">
         {/* Stepper */}
-        <ol className="mx-auto mb-10 flex max-w-xl items-center justify-between gap-2">
+        <ol className="mx-auto mb-8 flex max-w-xl items-center justify-between gap-1 min-[400px]:mb-10 min-[400px]:gap-2">
           {stepsMeta.map((s, i) => {
             const done = step > s.n;
             const active = step === s.n;
             return (
-              <li key={s.n} className="flex flex-1 items-center gap-2">
-                <div className="flex flex-col items-center gap-1.5">
+              <li key={s.n} className="flex min-w-0 flex-1 items-center gap-1 min-[400px]:gap-2">
+                <div className="flex min-w-0 flex-col items-center gap-1 min-[400px]:gap-1.5">
                   <span
-                    className={`flex h-9 w-9 items-center justify-center rounded-full text-sm font-bold transition-all duration-300 ${
+                    className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-sm font-bold transition-all duration-300 min-[400px]:h-9 min-[400px]:w-9 ${
                       done
                         ? "bg-forest text-cream"
                         : active
@@ -97,7 +97,7 @@ export default function DonatePage() {
                     {done ? <Check className="h-4 w-4" /> : s.n}
                   </span>
                   <span
-                    className={`text-[11px] font-semibold uppercase tracking-wide ${
+                    className={`max-w-[4.25rem] text-center text-[9px] font-semibold uppercase leading-tight tracking-wide min-[400px]:max-w-none min-[400px]:text-[11px] ${
                       active || done ? "text-forest" : "text-muted"
                     }`}
                   >
@@ -106,7 +106,7 @@ export default function DonatePage() {
                 </div>
                 {i < stepsMeta.length - 1 && (
                   <div
-                    className={`mb-5 h-0.5 flex-1 rounded-full transition-colors duration-300 ${
+                    className={`mb-4 h-0.5 min-w-[0.35rem] flex-1 rounded-full transition-colors duration-300 min-[400px]:mb-5 ${
                       step > s.n ? "bg-forest" : "bg-soft"
                     }`}
                   />
@@ -208,12 +208,12 @@ export default function DonatePage() {
                   </div>
                 </div>
 
-                <div className="flex justify-end pt-2">
+                <div className="flex justify-stretch pt-2 min-[480px]:justify-end">
                   <button
                     type="button"
                     disabled={!canContinueStep1}
                     onClick={() => setStep(2)}
-                    className="btn-mustard disabled:cursor-not-allowed disabled:opacity-40"
+                    className="btn-mustard w-full min-[480px]:w-auto disabled:cursor-not-allowed disabled:opacity-40"
                   >
                     {page.continue}
                     <ArrowRight className="h-4 w-4" />
@@ -285,7 +285,7 @@ export default function DonatePage() {
                       <p className="text-xs font-bold uppercase tracking-wider text-muted">
                         {page.numberLabel}
                       </p>
-                      <p className="mt-1 font-mono text-2xl font-extrabold tracking-wider text-forest">
+                      <p className="mt-1 break-all font-mono text-xl font-extrabold tracking-wide text-forest min-[480px]:text-2xl min-[480px]:tracking-wider">
                         {payment.number}
                       </p>
                     </div>
@@ -352,11 +352,11 @@ export default function DonatePage() {
                   ))}
                 </ol>
 
-                <div className="flex flex-wrap items-center justify-between gap-3 pt-2">
+                <div className="flex flex-col-reverse gap-3 pt-2 min-[480px]:flex-row min-[480px]:flex-wrap min-[480px]:items-center min-[480px]:justify-between">
                   <button
                     type="button"
                     onClick={() => setStep(1)}
-                    className="inline-flex items-center gap-2 rounded-full px-4 py-2.5 text-sm font-semibold text-forest hover:bg-soft"
+                    className="inline-flex w-full items-center justify-center gap-2 rounded-full px-4 py-2.5 text-sm font-semibold text-forest hover:bg-soft min-[480px]:w-auto min-[480px]:justify-start"
                   >
                     <ArrowLeft className="h-4 w-4" />
                     {page.back}
@@ -365,7 +365,7 @@ export default function DonatePage() {
                     type="button"
                     disabled={!method}
                     onClick={() => setStep(3)}
-                    className="btn-mustard disabled:cursor-not-allowed disabled:opacity-40"
+                    className="btn-mustard w-full min-[480px]:w-auto disabled:cursor-not-allowed disabled:opacity-40"
                   >
                     {page.continue}
                     <ArrowRight className="h-4 w-4" />
@@ -436,7 +436,7 @@ export default function DonatePage() {
           </div>
 
           {/* Trust sidebar */}
-          <aside className="space-y-4 min-[960px]:sticky min-[960px]:top-24 min-[960px]:self-start">
+          <aside className="space-y-4 min-[960px]:sticky min-[960px]:self-start min-[960px]:[top:calc(var(--nav-h)+var(--safe-top)+1.5rem)]">
             <div className="rounded-3xl bg-sage-bg/70 p-5">
               <div className="mb-3 flex items-center gap-2 font-bold text-forest">
                 <Shield className="h-4 w-4" />

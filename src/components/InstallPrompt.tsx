@@ -79,7 +79,8 @@ export default function InstallPrompt() {
 
   return (
     <div
-      className="fixed inset-x-3 bottom-3 z-[80] mx-auto max-w-md animate-[slideUp_0.35s_ease] sm:inset-x-auto sm:right-4 sm:bottom-4"
+      className="fixed inset-x-3 z-[80] mx-auto max-w-md animate-[slideUp_0.35s_ease] sm:inset-x-auto sm:right-4"
+      style={{ bottom: "calc(0.75rem + env(safe-area-inset-bottom, 0px))" }}
       role="dialog"
       aria-label={t.installTitle}
     >

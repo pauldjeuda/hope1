@@ -20,7 +20,7 @@ export default function Causes() {
             <div className="progress-track mt-5">
               <div className="progress-fill" style={{ width: `${CAUSES.featured.percent}%` }} />
             </div>
-            <div className="mt-3 flex justify-between text-sm text-muted">
+            <div className="mt-3 flex flex-col gap-1 text-sm text-muted min-[480px]:flex-row min-[480px]:justify-between min-[480px]:gap-4">
               <span>
                 Collecté : <strong className="text-forest">{CAUSES.featured.raised} FCFA</strong>
               </span>
@@ -45,7 +45,7 @@ export default function Causes() {
                 <div className="progress-track mt-4">
                   <div className="progress-fill" style={{ width: `${item.percent}%` }} />
                 </div>
-                <div className="mt-2 flex justify-between text-xs text-muted">
+                <div className="mt-2 flex flex-col gap-0.5 text-xs text-muted min-[400px]:flex-row min-[400px]:justify-between">
                   <span>{item.raised} FCFA</span>
                   <span>{item.goal} FCFA</span>
                 </div>

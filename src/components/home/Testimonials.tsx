@@ -5,11 +5,11 @@ export default function Testimonials() {
   return (
     <section className="torn-bottom torn-bottom-forest bg-page pb-16 pt-6">
       <div className="container-x pb-8">
-        <div className="mb-8 flex items-center justify-between gap-4">
+        <div className="mb-8 flex flex-col gap-4 min-[640px]:flex-row min-[640px]:items-center min-[640px]:justify-between">
           <h2 className="text-[clamp(1.7rem,3vw,2.4rem)] font-extrabold text-ink">
             {TESTIMONIAL.title}
           </h2>
-          <div className="flex gap-2">
+          <div className="flex shrink-0 gap-2">
             <button
               type="button"
               className="flex h-10 w-10 items-center justify-center rounded-full bg-soft text-forest"

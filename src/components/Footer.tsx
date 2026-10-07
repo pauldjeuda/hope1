@@ -23,7 +23,7 @@ export default function Footer() {
       <div className="container-x grid gap-10 pb-10 pt-16 min-[800px]:grid-cols-2 min-[1100px]:grid-cols-4">
         <div>
           <Link to="/" className="mb-4 inline-block" aria-label="HOPE Bridge for the Needy">
-            <Logo part="full" tone="dark" className="h-14 w-auto max-w-[220px]" />
+            <Logo part="full" tone="dark" className="h-11 w-auto max-w-[180px] min-[480px]:h-14 min-[480px]:max-w-[220px]" />
           </Link>
           <p className="mb-2 text-xs text-cream/55">
             {FOOTER.rights.replace("{year}", String(year))}
@@ -89,7 +89,7 @@ export default function Footer() {
             {FOOTER.newsletter}
           </h3>
           <form
-            className="flex overflow-hidden rounded-full bg-forest-deep ring-1 ring-white/15"
+            className="flex flex-col gap-2 overflow-hidden rounded-2xl bg-forest-deep ring-1 ring-white/15 min-[480px]:flex-row min-[480px]:rounded-full"
             onSubmit={(e) => e.preventDefault()}
           >
             <input
@@ -97,7 +97,11 @@ export default function Footer() {
               placeholder="Votre e-mail"
               className="min-w-0 flex-1 bg-transparent px-4 py-3 text-sm text-cream outline-none placeholder:text-cream/45"
             />
-            <button type="submit" className="bg-mustard px-4 text-forest" aria-label="Envoyer">
+            <button
+              type="submit"
+              className="flex items-center justify-center bg-mustard px-4 py-3 text-forest min-[480px]:py-0"
+              aria-label="Envoyer"
+            >
               <Send className="h-4 w-4" />
             </button>
           </form>

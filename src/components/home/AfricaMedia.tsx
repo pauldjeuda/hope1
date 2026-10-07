@@ -43,7 +43,7 @@ export default function AfricaMedia({
   }, [mode]);
 
   return (
-    <div className="relative mx-auto w-full max-w-[460px]">
+    <div className="relative mx-auto w-full max-w-[min(460px,100%)] px-1 pb-2 min-[480px]:px-0 min-[480px]:pb-0">
       {/* Ratio = silhouette Afrique solide (860×1000) */}
       <div className="relative aspect-[860/1000] w-full">
         {/* Relief / ombre sous le continent */}
@@ -76,8 +76,8 @@ export default function AfricaMedia({
         </div>
       </div>
 
-      <div className="absolute bottom-[8%] right-[-2%] z-10 flex h-[7.5rem] w-[7.5rem] flex-col items-center justify-center rounded-full bg-mustard text-center shadow-[0_12px_32px_rgba(63,74,46,0.3)] min-[480px]:right-[-6%] min-[480px]:h-[8.25rem] min-[480px]:w-[8.25rem]">
-        <span className="px-2 text-[13px] font-extrabold leading-tight text-forest-deep min-[480px]:text-sm">
+      <div className="absolute bottom-[6%] right-[2%] z-10 flex h-[6.25rem] w-[6.25rem] flex-col items-center justify-center rounded-full bg-mustard text-center shadow-[0_12px_32px_rgba(63,74,46,0.3)] min-[480px]:bottom-[8%] min-[480px]:right-[0%] min-[480px]:h-[7.5rem] min-[480px]:w-[7.5rem] min-[700px]:right-[-4%] min-[700px]:h-[8.25rem] min-[700px]:w-[8.25rem]">
+        <span className="px-1.5 text-[11px] font-extrabold leading-tight text-forest-deep min-[480px]:px-2 min-[480px]:text-[13px] min-[700px]:text-sm">
           {badge}
         </span>
         <span className="mt-1 px-3 text-[9px] font-bold uppercase tracking-wide text-forest/75">
