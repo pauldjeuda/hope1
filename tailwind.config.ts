@@ -15,6 +15,7 @@ export default {
         ink: "var(--ink)",
         muted: "var(--muted)",
         soft: "var(--soft)",
+        card: "var(--card)",
       },
       fontFamily: {
         sans: ["var(--font-sans)", "sans-serif"],

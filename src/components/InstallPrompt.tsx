@@ -84,7 +84,7 @@ export default function InstallPrompt() {
       role="dialog"
       aria-label={t.installTitle}
     >
-      <div className="rounded-2xl border border-forest/10 bg-card p-4 shadow-[0_12px_40px_rgba(31,36,24,0.18)]">
+      <div className="rounded-2xl border border-forest/10 bg-white p-4 shadow-[0_12px_40px_rgba(31,36,24,0.18)]">
         <div className="flex items-start gap-3">
           <img
             src="/brand/logo-mark.png"
